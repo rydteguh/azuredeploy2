@@ -1,0 +1,25 @@
+<div class="modal hidden" id="playlist-rename-modal">
+    <div class="backdrop" modal-backdrop></div>
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1>{{ 'updatePlaylist' | translate }}</h1>
+            <div ng-click="closeModal()" class="close-modal-icon"><i class="icon icon-cancel"></i></div>
+        </div>
+        <div class="modal-error">{{ error }}</div>
+        <div class="input-container">
+            <label>{{:: 'name' | translate }}</label>
+            <input type="text" ng-model="params.name" placeholder="{{ 'name' | translate }}">
+        </div>
+
+        <div class="input-container">
+            <label>{{:: 'description' | translate }}</label>
+            <textarea rows="5" ng-model="params.description" placeholder="{{ 'description' | translate }}"></textarea>
+        </div>
+
+        <div class="buttons">
+            <button ng-click="closeModal()" class="cancel">{{ 'cancel' | translate }}</button>
+            <button ng-click="updatePlaylist()" ng-disabled="!params.name" class="primary">{{ 'update' | translate }}</button>
+        </div>
+    </div>
+</div>

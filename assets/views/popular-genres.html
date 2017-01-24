@@ -1,0 +1,23 @@
+<div id="home" class="page-shadow scroll-container home-page" ng-controller="PopularGenresController" pretty-scrollbar lazy-img-container>
+
+    <div class="ad-container top-ad" ng-if="ad1" ng-bind-html="ad1"></div>
+
+    <div class="genres-container">
+        <div class="filter-bar">
+            <div class="sort">{{:: 'popularGenres' | translate }}</div>
+            <div class="filter hidden-phone">
+                <input type="text" ng-model="params.query" placeholder="{{:: 'filter' | translate }}">
+                <i class="icon icon-search"></i>
+            </div>
+        </div>
+
+        <div class="genres-inner-container">
+            <a class="genre-item" ng-repeat="genre in genres | filter:{name:params.query}" ui-sref="genre({name: utils.encodeUrlParam(genre.name)})">
+                <img lazy-img="{{ utils.img(genre.image ? genre.image : $rootScope.baseUrl+'assets/images/genres/'+genre.name.replace(' ', '-')+'.jpg', 'album') }}" ng-src="{{ utils.img(false, 'album') }}" alt="{{ genre.name }}">
+                <div class="name">{{ genre.name }}</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="ad-container bottom-ad" ng-if="ad2" ng-bind-html="ad2"></div>
+</div>
